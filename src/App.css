@@ -1,7 +1,30 @@
 .users {
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 6rem;
+}
+.users-table {
+  height: 32rem;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(69, 134, 247);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #22a3ff;
 }
 a {
   text-decoration: none;

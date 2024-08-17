@@ -35,11 +35,13 @@ const Users = () => {
       <button>
         <a href="/addUser">Add User</a>
       </button>
-      <UsersTable
-        users={users}
-        loadUsers={loadUsers}
-        onUserDelete={handleAlert}
-      />
+      <div className="users-table">
+        <UsersTable
+          users={users}
+          loadUsers={loadUsers}
+          onUserDelete={handleAlert}
+        />
+      </div>
     </div>
   );
 };

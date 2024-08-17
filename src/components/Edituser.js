@@ -14,10 +14,14 @@ const Edituser = () => {
     const response = await axios.get(
       "http://localhost/php_react/insert.php/" + id
     );
-    console.log(response.data.result);
-    setUserame(response.data.result[0].u_name);
-    setUserEmail(response.data.result[0].u_email);
-    setUserstate(response.data.result[0].u_stat);
+    if (response.data === "") {
+      alert("User not found");
+      navigate("/");
+    } else {
+      setUserame(response.data.result[0].u_name);
+      setUserEmail(response.data.result[0].u_email);
+      setUserstate(response.data.result[0].u_stat);
+    }
   };
 
   const putUser = async (eo) => {
@@ -33,7 +37,6 @@ const Edituser = () => {
       formData
     );
     setMessage(response.data.result);
-
     setInterval(() => {
       navigate("/");
     }, 1500);

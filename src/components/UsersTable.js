@@ -37,5 +37,4 @@ function UsersTable({users, onUserDelete}) {
   )
 }
 
-
 export default UsersTable

@@ -60,14 +60,24 @@ switch ($methods) {
         $name = $userpostdata->name;
         $email = $userpostdata->email;
         $state = $userpostdata->state;
-        $sql_code = "UPDATE users SET u_name = '$name', u_email = '$email', u_stat = '$state' WHERE id = $id";
-        $result = mysqli_query($conn, $sql_code);
-        if ($result) {
-            echo json_encode(['result' => 'user updated successfully']);
+        $test_id = "SELECT * FROM users WHERE id = $id";
+        $result_id = mysqli_query($conn, $test_id);
+        $count = mysqli_num_rows($result_id);
+        if ($count == 0) {
+            echo json_encode(['result' => 'user not found']);
+            echo "<script>alert('user not found');</script>";
+            return;
         } else {
-            echo json_encode(['result' => 'error when updating user']);
+            $sql_code = "UPDATE users SET u_name = '$name', u_email = '$email', u_stat = '$state' WHERE id = $id";
+            $result = mysqli_query($conn, $sql_code);
+            if ($result) {
+                echo json_encode(['result' => 'user updated successfully']);
+            } else {
+                echo json_encode(['result' => 'error when updating user']);
+            }
+            // print_r($userpostdata);
         }
-        // print_r($userpostdata);
+
         break;
     case 'DELETE':
         //عم نتحقق من اللبنك اللي اجاه الريكويست اذا فيو سلاش بالمنطقه التالته
